@@ -16,6 +16,7 @@ model User {
   cpf       String   @unique
   birthDay  DateTime
   address   Address?
+  Order     Order[]
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 }
@@ -33,4 +34,37 @@ model Address {
   clientId   Int      @unique
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
+}
+
+model Product {
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String
+  price         Float
+  weight        Float
+  quantity      Int
+  image         String
+  OrderProducts OrderProducts[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+}
+
+model Order {
+  id            Int             @id @default(autoincrement())
+  portion       Int
+  customer      User            @relation(fields: [clientId], references: [id])
+  clientId      Int
+  status        String
+  orderDate     DateTime        @default(now())
+  OrderProducts OrderProducts[]
+}
+
+model OrderProducts {
+  orderId   Int
+  productId Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+
+  @@unique([orderId, productId])
 }
