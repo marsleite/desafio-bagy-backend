@@ -1,5 +1,6 @@
 const { gql, ApolloServer } = require('apollo-server');
 const { PrismaClient } = require('@prisma/client');
+const md5 = require('md5');
 
 const typeDefs = gql`
   type User {
@@ -30,6 +31,24 @@ const typeDefs = gql`
     address(id: Int): Address
     addresses: [Address]
   }
+
+  type Mutation {
+    createUser(
+      firstName: String!
+      lastName: String!
+      email: String!
+      password: String!
+      cpf: String!
+      birthDay: String!
+      street: String!
+      number: Int!
+      complement: String!
+      city: String!
+      state: String!
+      country: String!
+      zipCode: String!
+    ): User
+  }
 `;
 
 const resolvers = {
@@ -51,6 +70,29 @@ const resolvers = {
     },
     addresses() {
       return new PrismaClient().address.findMany();
+    },
+  },
+  Mutation: {
+    createUser: async (_, args) => {
+      const {
+        firstName, lastName, email, password, cpf, birthDay, ...addresses
+      } = args;
+      const newUser = await new PrismaClient().user.create({
+        data: {
+          firstName,
+          lastName,
+          email,
+          password: md5(password),
+          cpf,
+          birthDay,
+          address: {
+            create: {
+              ...addresses,
+            },
+          },
+        },
+      });
+      return newUser;
     },
   },
 };
