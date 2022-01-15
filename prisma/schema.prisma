@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./bagyDesafio.db"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  password  String
+  cpf       String
+  nasci     DateTime
+  endereco  Address?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Order     Order[]
+}
+
+model Address {
+  id        Int      @id @default(autoincrement())
+  rua       String
+  numero    Int
+  bairro    String
+  cidade    String
+  estado    String
+  pais      String
+  cep       String
+  client    User     @relation(fields: [clientId], references: [id])
+  clientId  Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Product {
+  id         Int         @id @default(autoincrement())
+  name       String
+  imagem     String
+  descricao  String
+  peso       Float
+  preco      Float
+  quantidade Int
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @default(now())
+  OrderItem  OrderItem[]
+}
+
+model Order {
+  id         Int         @id @default(autoincrement())
+  parcelas   Int
+  comprador  User        @relation(fields: [clientId], references: [id])
+  clientId   Int
+  status     String
+  order_date DateTime
+  stock      Int
+  OrderItem  OrderItem[]
+}
+
+model OrderItem {
+  id         Int     @id @default(autoincrement())
+  order      Order   @relation(fields: [orderId], references: [id])
+  orderId    Int
+  product    Product @relation(fields: [productId], references: [id])
+  productId  Int
+  quantidade Int
+}
