@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const md5 = require('md5');
+const { UserMiddleware } = require('../../../middleware/user/user.middleware');
 
 module.exports = {
   User: {
@@ -27,6 +28,10 @@ module.exports = {
       const userData = {
         firstName, lastName, email, password: md5(password), cpf, birthDay,
       };
+      const user = await new UserMiddleware(email).alreadyExists();
+
+      if (user) throw new Error('User already exists');
+
       const newUser = await new PrismaClient().user.create({
         data: {
           ...userData,
