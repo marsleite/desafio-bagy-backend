@@ -1,6 +1,6 @@
-const { PrismaClient } = require('@prisma/client');
 const md5 = require('md5');
 const { TokenJwt } = require('../../../middleware/token/jwtToken');
+const { UserMiddleware } = require('../../../middleware/user/user.middleware');
 require('dotenv').config();
 
 module.exports = {
@@ -8,11 +8,8 @@ module.exports = {
     login: async (_, args) => {
       const { email, password } = args;
       let { token } = args;
-      const user = await new PrismaClient().user.findUnique({
-        where: {
-          email,
-        },
-      });
+      const user = await new UserMiddleware(email).alreadyExists();
+
       if (!user || user.password !== md5(password)) {
         throw new Error('Usuário ou senha inválidos');
       }
