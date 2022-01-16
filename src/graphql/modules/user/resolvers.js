@@ -24,14 +24,12 @@ module.exports = {
       const {
         firstName, lastName, email, password, cpf, birthDay, ...addresses
       } = args;
+      const userData = {
+        firstName, lastName, email, password: md5(password), cpf, birthDay,
+      };
       const newUser = await new PrismaClient().user.create({
         data: {
-          firstName,
-          lastName,
-          email,
-          password: md5(password),
-          cpf,
-          birthDay,
+          ...userData,
           address: {
             create: {
               ...addresses,
