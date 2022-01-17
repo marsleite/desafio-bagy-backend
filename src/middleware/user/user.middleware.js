@@ -7,14 +7,10 @@ class UserMiddleware {
     this.password = password;
   }
 
-  async alreadyExists() {
-    const user = await new PrismaClient().user.findUnique({
-      where: {
-        email: this.email,
-      },
-    });
-    if (user) throw new Error('User already exists');
-  }
+  // async alreadyExists() {
+  //   const user = await this.getByEmail();
+  //   if (user) throw new Error('User already exists');
+  // }
 
   async getByEmail() {
     const user = await new PrismaClient().user.findUnique({

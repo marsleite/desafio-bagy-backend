@@ -57,5 +57,35 @@ module.exports = {
       });
       return updatedOrder;
     },
+    deleteOrder: async (_, args) => {
+      const { id } = args;
+      // pegar os produtos do pedido e atualizar o estoque
+      const orderProducts = await new PrismaClient().orderProducts.findMany({
+        where: {
+          orderId: id,
+        },
+      });
+      await Promise.all(orderProducts.map(async ({ productId, quantity }) => {
+        const { quantity: stock } = await new PrismaClient().product.findUnique({
+          where: {
+            id: productId,
+          },
+        });
+        await new PrismaClient().product.update({
+          where: {
+            id: productId,
+          },
+          data: {
+            quantity: stock + quantity,
+          },
+        });
+      }));
+      const deletedOrder = await new PrismaClient().order.delete({
+        where: {
+          id,
+        },
+      });
+      return deletedOrder;
+    },
   },
 };

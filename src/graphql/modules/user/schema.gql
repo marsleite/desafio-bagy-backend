@@ -30,4 +30,26 @@ type Mutation {
     country: String!
     zipCode: String!
   ): User
+
+  updateUser(
+    id: Int!
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    cpf: String
+  ): User
+
+  updateAddress(
+    id: Int!
+    street: String
+    number: Int
+    complement: String
+    city: String
+    state: String
+    country: String
+    zipCode: String
+  ): User
+
+  deleteUser(id: Int!): User
 }

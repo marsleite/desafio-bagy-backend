@@ -30,7 +30,7 @@ model Address {
   state      String
   country    String
   zipCode    String
-  client     User     @relation(fields: [clientId], references: [id])
+  client     User     @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   clientId   Int      @unique
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
@@ -51,8 +51,8 @@ model Product {
 
 model Order {
   id            Int             @id @default(autoincrement())
-  portion       Int
-  customer      User            @relation(fields: [clientId], references: [id])
+  installment   Int
+  customer      User            @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   clientId      Int
   status        String
   orderDate     DateTime        @default(now())
@@ -62,8 +62,8 @@ model Order {
 model OrderProducts {
   orderId   Int
   productId Int
-  order     Order   @relation(fields: [orderId], references: [id])
-  product   Product @relation(fields: [productId], references: [id])
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   quantity  Int
 
   @@unique([orderId, productId])
