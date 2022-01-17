@@ -1,4 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
+const { SendEmail } = require('../../../middleware/email/send.email');
 
 module.exports = {
   Query: {
@@ -41,6 +42,7 @@ module.exports = {
           },
         });
       }));
+      await new SendEmail().send(newOrder);
       return { id, ...newOrder };
     },
     updateOrder: async (_, args) => {

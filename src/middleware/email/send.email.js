@@ -1,14 +1,15 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 class SendEmail {
   constructor() {
     this.config = {
-      host: 'smtp.umbler.com',
-      port: 587,
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
       secure: false,
       auth: {
-        user: 'marcelo@marsleite.com.br',
-        pass: '928010Mgr*',
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     };
   }
@@ -20,8 +21,8 @@ class SendEmail {
       from: 'Marcelo Leite <marcelo@marsleite.com.br>',
       to: `${data.email}`,
       subject: 'CONFIRMAÇÃO DO PEDIDO - Node.js',
-      text: `Olá, tudo bem ${data.name}`,
-      html: `<b>Olá, tudo bem?</b><p> O seu produto ${data.produto} chegará em breve; qtd: ${data.quantity}`,
+      text: 'Olá, tudo bem',
+      html: `<b>Olá, tudo bem?</b><p> O seu pedido está ${data.status} e está parcelado em ${data.portion}`,
     }).then((info) => {
       console.log(info);
     }).catch((err) => {
