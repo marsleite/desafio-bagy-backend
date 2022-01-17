@@ -20,14 +20,14 @@ type Query {
 
 type Mutation {
   createOrder(
-    portion: Int!
+    installment: Int!
     clientId: Int!
     status: String!
     products: GraphQLArrayOfObjects!
   ): Order
 
   updateOrder(
-    portion: Int!
+    installment: Int!
     clientId: Int!
     status: String!
     products: GraphQLArrayOfObjects!

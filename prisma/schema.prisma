@@ -51,7 +51,7 @@ model Product {
 
 model Order {
   id            Int             @id @default(autoincrement())
-  portion       Int
+  installment   Int
   customer      User            @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   clientId      Int
   status        String
