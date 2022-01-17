@@ -23,5 +23,22 @@ module.exports = {
         },
       });
     },
+    updateProduct: async (_, args) => {
+      const { token, id, ...data } = args;
+      new TokenJwt().verify(token);
+
+      const updated = new PrismaClient().product.update({
+        where: {
+          id,
+        },
+        data: {
+          ...data,
+        },
+      });
+      if (!updated) {
+        throw new Error('Product not found');
+      }
+      return updated;
+    },
   },
 };

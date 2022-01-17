@@ -23,4 +23,15 @@ type Mutation {
     image: String!
     token: String!
   ): Product
+
+  updateProduct(
+    id: Int!
+    name: String!
+    description: String!
+    price: Float!
+    weight: Float!
+    quantity: Int!
+    image: String!
+    token: String!
+  ): Product
 }
