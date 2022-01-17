@@ -28,9 +28,7 @@ module.exports = {
       const userData = {
         firstName, lastName, email, password: md5(password), cpf, birthDay,
       };
-      const user = await new UserMiddleware(email).alreadyExists();
-
-      if (user) throw new Error('User already exists');
+      await new UserMiddleware(email).alreadyExists();
 
       const newUser = await new PrismaClient().user.create({
         data: {

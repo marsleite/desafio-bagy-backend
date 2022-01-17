@@ -16,7 +16,7 @@ class TokenJwt {
 
   async verify(token) {
     const secret = await fs.readFile('jwt.secret.key', 'utf8');
-    return jwt.verify(token, secret, this.jwtConfig.algorithm);
+    jwt.verify(token, secret, this.jwtConfig.algorithm);
   }
 }
 
