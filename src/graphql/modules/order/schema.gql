@@ -1,0 +1,35 @@
+type OrderProductInput {
+  productId: Int
+  quantity: Int
+}
+
+scalar GraphQLArrayOfObjects
+
+type Order {
+  id: Int
+  portion: Int
+  clientId: Int
+  status: String
+}
+
+
+type Query {
+  orders: [Order]
+  order(id: Int): Order
+}
+
+type Mutation {
+  createOrder(
+    portion: Int!
+    clientId: Int!
+    status: String!
+    products: GraphQLArrayOfObjects!
+  ): Order
+
+  updateOrder(
+    portion: Int!
+    clientId: Int!
+    status: String!
+    products: GraphQLArrayOfObjects!
+  ): Order
+}
