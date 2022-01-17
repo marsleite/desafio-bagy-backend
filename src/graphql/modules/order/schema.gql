@@ -32,4 +32,6 @@ type Mutation {
     status: String!
     products: GraphQLArrayOfObjects!
   ): Order
+
+  deleteOrder(id: Int!): Order
 }
