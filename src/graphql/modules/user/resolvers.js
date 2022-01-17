@@ -44,7 +44,7 @@ module.exports = {
     },
     updateUser: async (_, args) => {
       const {
-        id, firstName, lastName, email, password, cpf, birthDay, ...addresses
+        id, firstName, lastName, email, password, cpf, birthDay,
       } = args;
       const userData = {
         firstName, lastName, email, password: md5(password), cpf, birthDay,
@@ -57,15 +57,28 @@ module.exports = {
           ...userData,
         },
       });
+      return updatedUser;
+    },
+    updateAddress: async (_, args) => {
+      const { id, ...address } = args;
       const updatedAddress = await new PrismaClient().address.update({
         where: {
           clientId: id,
         },
         data: {
-          ...addresses,
+          ...address,
         },
       });
-      return { ...updatedUser, address: updatedAddress };
+      return updatedAddress;
+    },
+    deleteUser: async (_, args) => {
+      const { id } = args;
+      const deletedUser = await new PrismaClient().user.delete({
+        where: {
+          id,
+        },
+      });
+      return deletedUser;
     },
   },
 };
