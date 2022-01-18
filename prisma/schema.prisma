@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./desafioDatabase.db"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+  cpf       String   @unique
+  birthDay  String
+  address   Address?
+  Order     Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Address {
+  id         Int      @id @default(autoincrement())
+  street     String
+  number     Int
+  complement String
+  city       String
+  state      String
+  country    String
+  zipCode    String
+  client     User     @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  clientId   Int      @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model Product {
+  id            Int             @id @default(autoincrement())
+  name          String
+  description   String
+  price         Float
+  weight        Float
+  quantity      Int
+  image         String
+  OrderProducts OrderProducts[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+}
+
+model Order {
+  id            Int             @id @default(autoincrement())
+  installment   Int
+  customer      User            @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  clientId      Int
+  status        String
+  orderDate     DateTime        @default(now())
+  OrderProducts OrderProducts[]
+}
+
+model OrderProducts {
+  orderId   Int
+  productId Int
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  quantity  Int
+
+  @@unique([orderId, productId])
+}

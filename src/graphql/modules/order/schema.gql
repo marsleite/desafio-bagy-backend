@@ -1,0 +1,37 @@
+type OrderProductInput {
+  productId: Int
+  quantity: Int
+}
+
+scalar GraphQLArrayOfObjects
+
+type Order {
+  id: Int
+  portion: Int
+  clientId: Int
+  status: String
+}
+
+
+type Query {
+  orders: [Order]
+  order(id: Int): Order
+}
+
+type Mutation {
+  createOrder(
+    installment: Int!
+    clientId: Int!
+    status: String!
+    products: GraphQLArrayOfObjects!
+  ): Order
+
+  updateOrder(
+    installment: Int!
+    clientId: Int!
+    status: String!
+    products: GraphQLArrayOfObjects!
+  ): Order
+
+  deleteOrder(id: Int!): Order
+}
