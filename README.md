@@ -1,23 +1,21 @@
 # Projeto API GraphQL Node.js backend-Bagy
 
-Este projeto é um desafio técnico proposto pela empresa bagy, no qual tive o prazer de fazer parte do processo seletivo.
+ O desenvolvimento do Projeto proposto neste documento é resultado da etapa de desafio técnico, que integra processo seletivo realizado pela Empresa Bagy.
 
 ## 🚀 Começando
 
-Essas instruções permitirão que você obtenha uma cópia do projeto para fins de teste.
+As instruções abaixo descritas permitirão a execução integral deste projeto.
 
-O projeto utiliza o [prisma](http://prisma.io) orm para a manipulação do banco de dados relacional, nesta oportinidade está sendo utilizado o banco SqLite3.
+O projeto utiliza o [prisma](http://prisma.io) orm para a manipulação do banco de dados relacional. Nesta oportinidade, está sendo utilizado o banco SqLite3.
 
-A API GraphQL está sendo utilizado o [Apollo-server](https://www.apollographql.com/docs/apollo-server/), rodando em http://localhost:4000
+A `API GraphQL` utiliza o [Apollo-server](https://www.apollographql.com/docs/apollo-server/), rodando em http://localhost:4000
 
 ### 📋 Pré-requisitos
 
-De que você precisa para instalar o software e como instalá-lo?
-
 ```
-Neste projeto precisa ter o SqLite3 instalado na sua máquina
+Para a execução deste projeto, se faz necessária a prévia instalação do SqLite3, na sua máquina.
 ```
-Para mais detalhes de como instalar o [sqlite3](https://www.sqlite.org/download.html) consulte a página oficial
+Para mais detalhes de como instalá-lo, consulte a [página oficial](https://www.sqlite.org/download.html).
 
 ### Diagrama ER
 Segue abaixo o Diagrama de Entidade e Relacionamento.
@@ -26,76 +24,54 @@ Segue abaixo o Diagrama de Entidade e Relacionamento.
 
 ### 🔧 Instalação
 
-Nesta sessão vamos dar os passos para a aplicação funcionar
+Nesta sessão, vamos proceder com o passo a passo para a aplicação funcionar.
 
-Instalação das dependências do projeto:
+- Instalação das dependências do `projeto`:
 
-```
+```bash
 yarn start
-
+# ou
 npm start
 ```
-Usaremos o prisma para toda a manipulação do banco sqlite3
+Usaremos o prisma para toda a manipulação do banco `sqlite3`
 
-Para executar as migrations:
+- Para executar as migrations:
 
-```
+```bash
 yarn prisma migrate dev
-
+# ou
 npx prisma migrate dev
 ```
 
-Para qualquer alteração no schema do prisma, caso necessário
-```
+- Para qualquer alteração nas tabelas do banco com schema do `prisma`, caso necessário:
+```bash
 yarn prisma db push
-
+# ou
 npx prisma db push
 ```
 
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
-
 ## 📦 Desenvolvimento
 
-Todas as ferramentas que foram utilizado para desenvolvimento
+Abaixo estão relacionadas as ferramentas que foram utilizadas para o desenvolvimento.
 
-## 🛠️ Construído com
-
-Mencione as ferramentas que você usou para criar seu projeto
+### 🛠️ Construído com
 
 * [Node.js](https://nodejs.org/en/docs/) - runtime javascript
+* [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - Linguagem
 * [yarn](https://yarnpkg.com/) - Gerenciador de dependências
 * [Prisma](http://prisma.io) - Orm Prisma
 * [Apollo Server](https://www.apollographql.com/docs/apollo-server/) - Usada para gerar RSS
 * [GraphQL](https://graphql.org/) Linguagem query para a API
 
-## 🖇️ Colaborando
-
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
-
-## 📌 Versão
-
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
-
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
+* **Marcelo Leite** - *Perfil Profissional* - [linkedin](https://www.linkedin.com/in/marsleite/)
 
-* **Um desenvolvedor** - *Trabalho Inicial* - [umdesenvolvedor](https://github.com/linkParaPerfil)
-* **Fulano De Tal** - *Documentação* - [fulanodetal](https://github.com/linkParaPerfil)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
-## 📄 Licença
-
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
 
 ## 🎁 Expressões de gratidão
 
-* Conte a outras pessoas sobre este projeto 📢
-* Convide alguém da equipe para uma cerveja 🍺 
-* Obrigado publicamente 🤓.
-* etc.
-
+* Obrigado a Bagy pela oportunidade de fazer deste processo seletivo 🤓.
+* Obrigado a Trybe pelo o ensino de qualidade.
 
 ---
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
+Feito por [Marcelo Leite](https://github.com/marsleite) 😊
