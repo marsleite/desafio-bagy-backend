@@ -70,7 +70,7 @@ Abaixo estão relacionadas as ferramentas que foram utilizadas para o desenvolvi
 
 ## 🎁 Expressões de gratidão
 
-* Obrigado a Bagy pela oportunidade de fazer deste processo seletivo 🤓.
+* Obrigado a Bagy pela oportunidade de fazer este processo seletivo 🤓.
 * Obrigado a Trybe pelo o ensino de qualidade.
 
 ---
