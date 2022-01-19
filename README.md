@@ -56,11 +56,11 @@ Abaixo estão relacionadas as ferramentas que foram utilizadas para o desenvolvi
 
 ### 🛠️ Construído com
 
-* [Node.js](https://nodejs.org/en/docs/) - runtime javascript
+* [Node.js](https://nodejs.org/en/docs/) - Runtime javascript
 * [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - Linguagem
 * [yarn](https://yarnpkg.com/) - Gerenciador de dependências
 * [Prisma](http://prisma.io) - Orm Prisma
-* [Apollo Server](https://www.apollographql.com/docs/apollo-server/) - Usada para gerar RSS
+* [Apollo Server](https://www.apollographql.com/docs/apollo-server/) - Servidor que roda o GraphQL
 * [GraphQL](https://graphql.org/) Linguagem query para a API
 
 ## ✒️ Autores
