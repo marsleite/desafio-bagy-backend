@@ -1,4 +1,4 @@
-# Projeto API GraphQL Node.js backend-Bagy
+# Projeto API GraphQL Node.js Backend-Bagy
 
  O desenvolvimento do Projeto proposto neste documento é resultado da etapa de desafio técnico, que integra processo seletivo realizado pela Empresa Bagy.
 
@@ -6,7 +6,7 @@
 
 As instruções abaixo descritas permitirão a execução integral deste projeto.
 
-O projeto utiliza o [prisma](http://prisma.io) orm para a manipulação do banco de dados relacional. Nesta oportinidade, está sendo utilizado o banco SqLite3.
+O projeto utiliza o [prisma](http://prisma.io) orm para a manipulação do banco de dados relacional. Nesta oportunidade, está sendo utilizado o banco SqLite3.
 
 A `API GraphQL` utiliza o [Apollo-server](https://www.apollographql.com/docs/apollo-server/), rodando em http://localhost:4000
 
